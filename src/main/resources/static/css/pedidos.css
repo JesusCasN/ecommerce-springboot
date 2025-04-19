@@ -1,0 +1,218 @@
+:root {
+    --color-primario: #6C63FF;
+    --color-secundario: #3A0CA3;
+    --color-acento: #F72585;
+    --color-hover: #FFD60A;
+    --color-texto: #1F1F1F;
+    --fondo-claro: #F9F9F9;
+    --fondo-gradiente: linear-gradient(135deg, #6C63FF, #3A0CA3);
+    --fuente-principal: 'Poppins', sans-serif;
+}
+
+.navbar {
+    background: var(--fondo-gradiente);
+    padding: 14px 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-brand {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: white !important;
+}
+
+.navbar-nav {
+    gap: 25px;
+}
+
+.nav-link {
+    color: white;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--color-hover);
+    transform: scale(1.05);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: url('../images/fondos/fondo2.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: var(--fuente-principal), sans-serif;
+    color: var(--color-texto);
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.6);
+    z-index: -1;
+}
+
+.pedido-container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+}
+
+.titulo-seccion {
+    font-weight: 700;
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--color-secundario);
+}
+
+.tabla-pedidos {
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.tabla-pedidos th {
+    background-color: var(--color-primario);
+    color: white;
+    text-align: center;
+}
+
+.tabla-pedidos td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.estado {
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.estado.entregado {
+    background-color: #28a745;
+    color: white;
+}
+
+.estado.proceso {
+    background-color: #ffc107;
+    color: #333;
+}
+
+.estado.cancelado {
+    background-color: #dc3545;
+    color: white;
+}
+
+.estado.pendiente {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-ver {
+    background-color: var(--color-acento);
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 12px;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-ver:hover {
+    background-color: #d61b69;
+    transform: scale(1.05);
+}
+
+.btn-secondary {
+    background-color: #6C63FF;
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #3A0CA3;
+    color: white;
+}
+
+
+footer {
+    background: var(--fondo-gradiente);
+    padding: 40px 0;
+    color: white;
+    text-align: center;
+    margin-top: 60px;
+}
+
+footer h5 {
+    position: relative;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+}
+
+footer h5::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: var(--color-hover);
+}
+
+
+footer a {
+    color: white;
+    transition: all 0.3s ease;
+    margin: 0 15px;
+}
+
+footer a:hover {
+    color: var(--color-hover) !important;
+    padding-left: 5px;
+}
+
+footer hr {
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    margin: 20px 0;
+}
+
+.header-imagen-pedidos {
+    background-image: url('../images/fondos/pedidos.png');
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+    border-radius: 20px;
+    margin: 10px auto 0;
+    position: relative;
+    max-width: 1300px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    opacity: 0.95;
+}
+
+.overlay-texto {
+    position: absolute;
+    bottom: 30px;
+    left: 40px;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 15px 25px;
+    border-radius: 12px;
+}
+
+.titulo-header {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+}

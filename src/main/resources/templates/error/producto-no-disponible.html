@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Producto no disponible</title>
+  <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+  <link th:href="@{/css/error.css}" rel="stylesheet" />
+</head>
+<body>
+<div class="error-container">
+  <div class="error-code">⚠</div>
+  <h2 class="error-title">Producto no disponible</h2>
+  <p class="error-message" th:text="${mensaje} ?: 'Este producto no está disponible actualmente. Intenta más tarde o elige otro.'"></p>
+  <a th:href="@{/productos}" class="btn btn-warning btn-home">
+    <i class="fas fa-box-open"></i> Ver otros productos
+  </a>
+</div>
+</body>
+</html>

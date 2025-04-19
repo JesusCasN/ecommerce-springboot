@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda en Línea</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- FontAwesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+
+<body>
+
+<!-- Fragmento de barra de navegación -->
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<!-- Video de presentación -->
+<div class="video-container">
+    <video autoplay muted loop>
+        <source th:src="@{/video/video.mp4}" type="video/mp4">
+        Tu navegador no soporta el video.
+    </video>
+</div>
+
+<!-- Sección de productos -->
+<div id="productos-disponibles" class="container mt-5">
+    <h2 class="text-center text-primary mb-4">Productos Disponibles</h2>
+
+    <!-- Filtro por categoría -->
+    <form th:action="@{/}" method="get" class="mb-4">
+        <label for="categoriaId" class="form-label">Filtrar por categoría:</label>
+        <select id="categoriaId" name="categoriaId" class="form-select" onchange="this.form.submit()">
+            <option value="">Todas las categorías</option>
+            <option th:each="categoria : ${categorias}"
+                    th:value="${categoria.idCategoria}"
+                    th:text="${categoria.nombre}"
+                    th:selected="${param.categoriaId == categoria.idCategoria}">
+            </option>
+        </select>
+    </form>
+
+    <!-- Lista de productos -->
+    <div class="row">
+        <div class="col-md-4" th:each="producto : ${productos}">
+            <div class="card mb-4 shadow-sm">
+                <img class="card-img-top product-image"
+                     th:src="@{/images/productosImg/{imagen}(imagen=${producto.imagen})}" alt="Imagen del producto">
+                <div class="card-body text-center">
+                    <h5 class="card-title" th:text="${producto.nombre}"></h5>
+                    <p class="card-text" th:text="${producto.descripcion}"></p>
+                    <p class="card-text text-primary fw-bold"><span th:text="${producto.precio}"></span> MXN</p>
+                    <form th:action="@{/carrito/agregar}" method="post">
+                        <input type="hidden" name="_csrf" th:value="${_csrf.token}">
+                        <input type="hidden" name="productoId" th:value="${producto.id_producto}">
+                        <input type="number" name="cantidad" value="1" min="1" class="form-control mb-2"
+                               placeholder="Cantidad">
+                        <button type="submit" class="btn btn-primary w-100"><i class="fas fa-cart-plus"></i> Añadir al
+                            carrito
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Paginación -->
+    <div class="pagination d-flex justify-content-center mt-4">
+        <nav>
+            <ul class="pagination">
+                <li th:if="${paginaActual > 0}" class="page-item">
+                    <a class="page-link" th:href="@{/(pagina=${paginaActual - 1})}">«</a>
+                </li>
+                <li th:each="i : ${#numbers.sequence(0, totalPaginas - 1)}"
+                    th:classappend="${i == paginaActual} ? 'active'" class="page-item">
+                    <a class="page-link" th:href="@{/(pagina=${i})}" th:text="${i + 1}">1</a>
+                </li>
+                <li th:if="${paginaActual < totalPaginas - 1}" class="page-item">
+                    <a class="page-link" th:href="@{/(pagina=${paginaActual + 1})}">»</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<!-- Fragmento de pie de página -->
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<!-- Bootstrap JS -->
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+
+</html>

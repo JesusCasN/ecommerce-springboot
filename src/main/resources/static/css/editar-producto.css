@@ -1,0 +1,207 @@
+/* ==============================
+   🌐 Variables y Estilos Base
+============================== */
+:root {
+    --color-primario: #6C63FF;
+    --color-secundario: #3A0CA3;
+    --color-acento: #F72585;
+    --color-hover: #FFD60A;
+    --color-texto: #1F1F1F;
+    --fondo-claro: #F9F9F9;
+    --fondo-gradiente: linear-gradient(135deg, #6C63FF, #3A0CA3);
+    --fuente-principal: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--fondo-claro);
+    font-family: var(--fuente-principal), sans-serif;
+    color: var(--color-texto);
+    margin: 0;
+    padding: 0;
+}
+
+/* ==============================
+   🔝 Navbar
+============================== */
+.navbar {
+    background: var(--fondo-gradiente);
+    padding: 14px 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-brand {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: white !important;
+}
+
+.navbar-nav {
+    gap: 25px;
+}
+
+.nav-link {
+    color: white;
+    font-size: 1.2rem;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-link:hover {
+    color: var(--color-hover);
+    transform: scale(1.05);
+}
+
+.dropdown-menu {
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+    background-color: white;
+    border: none;
+}
+
+.dropdown-item {
+    font-size: 1.1rem;
+    transition: background-color 0.3s;
+    color: var(--color-texto);
+    padding: 12px 20px;
+}
+
+.dropdown-item:hover {
+    background-color: var(--color-primario);
+    color: white;
+}
+
+/* ==============================
+   🧾 Contenido Principal
+============================== */
+.admin-container {
+    max-width: 700px;
+    background: white;
+    padding: 40px;
+    margin-top: 60px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.admin-title {
+    font-size: 2rem;
+    color: var(--color-primario);
+    font-weight: 600;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.form-label {
+    font-weight: 600;
+}
+
+.form-control {
+    border-radius: 8px;
+    font-size: 1rem;
+    padding: 10px 15px;
+}
+
+.form-control:focus {
+    border-color: var(--color-primario);
+    box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.25);
+}
+
+/* ==============================
+   🔘 Botones
+============================== */
+.btn-primary {
+    background: linear-gradient(135deg, var(--color-acento), var(--color-secundario));
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 10px 25px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 15px rgba(114, 9, 183, 0.4);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, var(--color-secundario), #4361EE);
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+/* ==============================
+   ⚓ Footer
+============================== */
+footer {
+    background: var(--fondo-gradiente);
+    padding: 40px 0;
+    color: white;
+    text-align: center;
+    margin-top: 60px;
+}
+
+footer h5 {
+    position: relative;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+}
+
+footer h5::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: var(--color-hover);
+}
+
+footer a {
+    color: white;
+    transition: all 0.3s ease;
+    margin: 0 15px;
+}
+
+footer a:hover {
+    color: var(--color-hover) !important;
+    padding-left: 5px;
+}
+
+footer hr {
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    margin: 20px 0;
+}
+
+/* ==============================
+   📱 Responsive
+============================== */
+@media (max-width: 768px) {
+    .admin-container {
+        padding: 20px;
+        margin: 30px 20px;
+    }
+
+    .admin-title {
+        font-size: 1.5rem;
+    }
+
+    .btn-primary, .btn-secondary {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+}

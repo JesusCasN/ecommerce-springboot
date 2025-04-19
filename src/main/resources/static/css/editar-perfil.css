@@ -1,0 +1,248 @@
+:root {
+    --color-primario: #6C63FF;
+    --color-secundario: #3A0CA3;
+    --color-acento: #F72585;
+    --color-hover: #FFD60A;
+    --color-texto: #1F1F1F;
+    --fondo-claro: #F9F9F9;
+    --fondo-gradiente: linear-gradient(135deg, #6C63FF, #3A0CA3);
+    --fuente-principal: 'Poppins', sans-serif;
+}
+
+/* ==============================
+   🎨 Fondo general
+============================== */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--fuente-principal), sans-serif;
+    background: url('../images/fondos/fondo2.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: var(--color-texto);
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.6);
+    z-index: -1;
+}
+
+/* ==============================
+   🔝 Navbar
+============================== */
+.navbar {
+    background: var(--fondo-gradiente);
+    padding: 14px 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-brand {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: white !important;
+}
+
+.navbar-nav {
+    gap: 25px;
+}
+
+.nav-link {
+    color: white;
+    font-size: 1.2rem;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-link:hover {
+    color: var(--color-hover);
+    transform: scale(1.05);
+}
+
+/* ==============================
+   📦 Contenedor principal
+============================== */
+.perfil-container {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.banner {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.banner h1 {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-size: 32px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* ==============================
+   📝 Formulario
+============================== */
+.form-container {
+    padding: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: var(--color-primario);
+    box-shadow: 0 0 5px rgba(108, 99, 255, 0.4);
+}
+
+/* ==============================
+   🔘 Botones
+============================== */
+.btn-submit {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    background-color: var(--color-primario);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-submit:hover {
+    background-color: var(--color-secundario);
+    transform: scale(1.02);
+}
+
+.btn-back {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 16px;
+    color: var(--color-primario);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-back:hover {
+    color: var(--color-secundario);
+    text-decoration: underline;
+}
+
+/* ==============================
+   ✉️ Mensajes
+============================== */
+.message {
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.message.success {
+    color: green;
+}
+
+.message.error {
+    color: red;
+}
+
+/* ==============================
+   ⚓ Footer
+============================== */
+footer {
+    background: var(--fondo-gradiente);
+    padding: 40px 0;
+    color: white;
+    text-align: center;
+}
+
+footer h5 {
+    position: relative;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+}
+
+footer h5::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: var(--color-hover);
+}
+
+footer a {
+    color: white;
+    transition: all 0.3s ease;
+    margin: 0 15px;
+}
+
+footer a:hover {
+    color: var(--color-hover) !important;
+    padding-left: 5px;
+}
+
+footer hr {
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    margin: 20px 0;
+}
+
+/* ==============================
+   📱 Responsividad
+============================== */
+@media (max-width: 768px) {
+    .perfil-container {
+        margin: 20px;
+    }
+
+    .banner h1 {
+        font-size: 24px;
+    }
+
+    .form-container {
+        padding: 20px;
+    }
+}

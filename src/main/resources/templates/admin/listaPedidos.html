@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Pedidos</title>
+
+    <!-- Bootstrap y estilos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/listaPedidos.css}">
+</head>
+<body>
+
+<!-- Navbar fragment -->
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="container mt-5 admin-container">
+    <h1 class="text-center mb-4 text-primary">Gestión de Pedidos</h1>
+
+    <!-- Formulario para filtros -->
+    <form class="mb-4" th:action="@{/admin/pedidos}" method="get">
+        <div class="row">
+            <div class="col-md-4">
+                <label for="fechaInicio" class="form-label">Fecha Inicio:</label>
+                <input type="date" class="form-control" id="fechaInicio" name="fechaInicio"
+                       th:value="${fechaInicio != null ? fechaInicio : ''}">
+            </div>
+            <div class="col-md-4">
+                <label for="fechaFin" class="form-label">Fecha Fin:</label>
+                <input type="date" class="form-control" id="fechaFin" name="fechaFin"
+                       th:value="${fechaFin != null ? fechaFin : ''}">
+            </div>
+            <div class="col-md-4">
+                <label for="usuario" class="form-label">Usuario:</label>
+                <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Nombre de usuario"
+                       th:value="${usuario != null ? usuario : ''}">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Filtrar</button>
+    </form>
+
+    <!-- Tabla para mostrar los pedidos -->
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead>
+            <tr>
+                <th>ID Pedido</th>
+                <th>Fecha del Pedido</th>
+                <th>Total</th>
+                <th>Usuario</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="pedido : ${pedidos}">
+                <td th:text="${pedido.id_pedido}"></td>
+                <td th:text="${#temporals.format(pedido.getFechaAsLocalDateTime(), 'dd/MM/yyyy HH:mm')}"></td>
+                <td th:text="${pedido.total}"></td>
+                <td th:text="${pedido.usuario.usuario}"></td>
+                <td>
+                    <a class="btn btn-info btn-sm" th:href="@{/admin/pedidos/detalle/{id}(id=${pedido.id_pedido})}">
+                        Ver Detalles
+                    </a>
+                </td>
+            </tr>
+
+            <!-- Si no hay pedidos -->
+            <tr th:if="${#lists.isEmpty(pedidos)}">
+                <td colspan="5" class="text-center">No se encontraron pedidos para los filtros seleccionados.</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <a th:href="@{/}" class="btn btn-secondary mt-4">Volver al inicio</a>
+</div>
+
+<!-- Footer fragment -->
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

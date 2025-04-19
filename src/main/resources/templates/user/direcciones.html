@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Direcciones</title>
+
+    <!-- Bootstrap CSS -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!-- CSS personalizado -->
+    <link th:href="@{/css/direcciones.css}" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- Navbar fragment -->
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<!-- Contenido Principal -->
+<div class="main-container">
+    <!-- Banner Superior -->
+    <div class="header-banner">
+        <img src="/images/fondos/direccion.jpg" alt="Gestión de Direcciones">
+        <h1 class="banner-title">Tus Direcciones</h1>
+    </div>
+
+    <!-- Formulario para Nueva Dirección -->
+    <section class="form-section">
+        <h2 class="form-title">Nueva Dirección</h2>
+        <form th:action="@{/direcciones}" th:object="${direccion}" method="post">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <select th:field="*{tipo}" class="form-select" id="tipo">
+                            <option value="CASA">Casa</option>
+                            <option value="TRABAJO">Trabajo</option>
+                            <option value="FACTURACION">Facturación</option>
+                        </select>
+                        <label for="tipo">Tipo de Dirección</label>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input type="text" th:field="*{calle}" class="form-control" id="calle" required>
+                        <label for="calle">Calle y Número</label>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-floating">
+                        <input type="text" th:field="*{ciudad}" class="form-control" id="ciudad" required>
+                        <label for="ciudad">Ciudad</label>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-floating">
+                        <input type="text" th:field="*{estado}" class="form-control" id="estado" required>
+                        <label for="estado">Estado/Provincia</label>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-floating">
+                        <input type="text" th:field="*{codigoPostal}" class="form-control" id="codigoPostal" required>
+                        <label for="codigoPostal">Código Postal</label>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="form-floating">
+                        <input type="text" th:field="*{pais}" class="form-control" id="pais" required>
+                        <label for="pais">País</label>
+                    </div>
+                </div>
+
+                <div class="col-12 text-end">
+                    <a th:href="@{/}" class="btn btn-secondary btn-lg">
+                        <i class="bi bi-arrow-left"></i> Regresar
+                    </a>
+                    <button type="submit" class="btn btn-primary-custom btn-lg">
+                        <i class="bi bi-save me-2"></i>Guardar Dirección
+                    </button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+    <!-- Listado de Direcciones Registradas -->
+    <section class="registered-addresses">
+        <h2 class="form-title mt-5">Direcciones Registradas</h2>
+        <div class="table-responsive">
+            <table class="table address-table">
+                <thead>
+                <tr>
+                    <th>Tipo</th>
+                    <th>Dirección</th>
+                    <th>Ciudad</th>
+                    <th>Estado</th>
+                    <th>C.P.</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="direccion : ${direcciones}">
+                    <td class="fw-bold" th:text="${direccion.tipo}"></td>
+                    <td th:text="${direccion.calle}"></td>
+                    <td th:text="${direccion.ciudad}"></td>
+                    <td th:text="${direccion.estado}"></td>
+                    <td th:text="${direccion.codigoPostal}"></td>
+                    <td class="action-buttons">
+                        <a th:href="@{/direcciones/{idDireccion}/editar(idDireccion=${direccion.idDireccion})}"
+                           class="btn btn-warning btn-sm">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                        <form th:action="@{/direcciones/{idDireccion}/eliminar(idDireccion=${direccion.idDireccion})}"
+                              method="post" class="d-inline">
+                            <button type="submit" class="btn btn-danger btn-sm">
+                                <i class="bi bi-trash3"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                <!-- Si no hay direcciones -->
+                <tr th:if="${#lists.isEmpty(direcciones)}">
+                    <td colspan="6" class="text-center">No tienes direcciones registradas.</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>
+
+<!-- Footer fragment -->
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<!-- Bootstrap JS -->
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+
+</body>
+</html>

@@ -1,0 +1,147 @@
+/* General */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f8f9fa; /* Fondo claro por defecto */
+    background-size: cover;
+}
+
+/* Contenedor principal del login */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+
+    /* Imagen de fondo */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    /* Superposición translúcida */
+    background-color: rgba(255, 255, 255, 0.6); /* Transparencia clara */
+    background-blend-mode: lighten; /* Mezcla que aclara el fondo */
+}
+
+/* Caja de login */
+.login-box {
+    background-color: rgba(255, 255, 255, 0.85); /* Fondo translúcido */
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Sombra ligera */
+    text-align: center;
+    color: #333; /* Color oscuro para texto */
+    width: 350px;
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Borde sutil */
+}
+
+.login-box h2 {
+    margin-bottom: 20px;
+    font-size: 2.2em;
+    color: #007bff; /* Azul brillante */
+    font-weight: bold;
+    text-shadow: 0 4px 6px rgba(0, 123, 255, 0.3); /* Sombra azul ligera */
+}
+
+/* Estilo de los campos de entrada */
+.input-box {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 12px 15px;
+    background: rgba(255, 255, 255, 0.8); /* Fondo translúcido claro */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+    transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.input-box input:focus {
+    background: rgba(255, 255, 255, 1); /* Fondo completamente blanco al enfocar */
+    border-color: #007bff; /* Borde azul claro */
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5); /* Resplandor azul */
+}
+
+.icon-user, #togglePassword {
+    color: #007bff; /* Azul brillante */
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.icon-user:hover, #togglePassword:hover {
+    color: #0056b3; /* Azul más oscuro al pasar el mouse */
+}
+
+/* Estilo del botón de enviar */
+button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #007bff, #0056b3); /* Degradado azul brillante */
+    border: none;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.4s ease, transform 0.2s ease, box-shadow 0.4s ease;
+}
+
+button:hover {
+    transform: scale(1.05); /* Ligera ampliación al pasar el mouse */
+    background: linear-gradient(135deg, #0056b3, #003f7f); /* Degradado más oscuro */
+    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.5); /* Resplandor azul */
+}
+
+/* Enlace para registro */
+.register-link {
+    margin-top: 20px;
+}
+
+.register-link p {
+    color: #333;
+    font-size: 14px;
+}
+
+.register-link a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+    color: #0056b3; /* Azul más oscuro */
+}
+
+/* Mensajes de error */
+.error-message p {
+    margin-top: 10px;
+    color: #dc3545; /* Rojo para errores */
+    font-weight: bold;
+    text-shadow: 0 2px 4px rgba(220, 53, 69, 0.3); /* Sombra roja ligera */
+}
+
+#error-message {
+    background-color: rgba(255, 0, 0, 0.1); /* Fondo translúcido para errores */
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(220, 53, 69, 0.5); /* Borde rojo claro */
+}

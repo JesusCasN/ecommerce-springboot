@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmar Carrito</title>
+
+    <!-- Bootstrap CSS -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" th:href="@{/css/confirmar-carrito.css}">
+</head>
+
+<body>
+
+<!-- Navbar -->
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<!-- Contenido principal -->
+<div class="container mt-5 confirmar-container">
+    <h1 class="text-center text-primary mb-4">
+        <i class="fas fa-shopping-cart"></i> Confirmar Carrito
+    </h1>
+
+    <div class="mt-4">
+        <h3 class="text-secondary mb-3">Productos en tu carrito</h3>
+        <table class="table table-striped text-center">
+            <thead class="table-dark">
+            <tr>
+                <th scope="col">Producto</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Total</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="producto : ${productosEnCarrito}">
+                <td th:text="${producto.producto.nombre}"></td>
+                <td th:text="${producto.cantidad}"></td>
+                <td th:text="${#numbers.formatDecimal(producto.producto.precio, 1, 2)}"></td>
+                <td th:text="${#numbers.formatDecimal(producto.total, 1, 2)}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <h3 class="text-end mt-3">Total:
+            <span class="text-success fw-bold" th:text="${#numbers.formatDecimal(totalCarrito, 1, 2)}"></span> MXN
+        </h3>
+    </div>
+
+    <div class="mt-5">
+        <h3 class="text-secondary mb-3">
+            <i class="fas fa-map-marker-alt"></i> Selección de Dirección de Envío
+        </h3>
+        <form th:action="@{/carrito/confirmar-pedido}" method="post" class="needs-validation" novalidate>
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
+            <div class="mb-4">
+                <label for="direccion" class="form-label">Dirección de Envío:</label>
+                <select name="idDireccion" id="direccion" class="form-select" required>
+                    <option value="" disabled selected>Seleccione una dirección</option>
+                    <option th:each="direccion : ${direcciones}"
+                            th:value="${direccion.idDireccion}"
+                            th:text="${direccion.calle + ', ' + direccion.ciudad + ', ' + direccion.estado}">
+                    </option>
+                </select>
+                <div class="invalid-feedback">Por favor selecciona una dirección.</div>
+            </div>
+
+            <div class="mb-4">
+                <label for="formaPago" class="form-label">Método de Pago:</label>
+                <select name="idFormaPago" id="formaPago" class="form-select" required>
+                    <option value="" disabled selected>Seleccione un método de pago</option>
+                    <option th:each="formaPago : ${formasDePago}"
+                            th:value="${formaPago.idFormaPago}"
+                            th:text="${formaPago.nombre}">
+                    </option>
+                </select>
+                <div class="invalid-feedback">Por favor selecciona un método de pago.</div>
+            </div>
+
+            <button type="submit" class="btn btn-success w-100">
+                <i class="fas fa-check-circle"></i> Confirmar Compra
+            </button>
+        </form>
+    </div>
+
+    <div class="text-center mt-4">
+        <a th:href="@{/carrito}" class="btn btn-outline-primary">
+            <i class="fas fa-arrow-left"></i> Regresar al Carrito
+        </a>
+    </div>
+</div>
+
+<!-- Footer -->
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<!-- Bootstrap JS -->
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+<script>
+    (() => {
+        'use strict';
+        const forms = document.querySelectorAll('.needs-validation');
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    })();
+</script>
+</body>
+</html>

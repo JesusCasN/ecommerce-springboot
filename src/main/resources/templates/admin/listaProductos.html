@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Productos</title>
+
+    <!-- Bootstrap -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" th:href="@{/css/listaProductos.css}">
+</head>
+
+<body>
+
+<!-- Navbar global -->
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="container mt-5 gestion-productos-container">
+    <h1 class="text-center mb-4 text-primary">Gestión de Productos</h1>
+
+    <!-- Botones de acciones -->
+    <div class="button-group d-flex flex-wrap justify-content-center gap-3 mb-4">
+        <a th:href="@{/admin/productos/nuevo}" class="btn btn-agregar"><i class="fas fa-plus"></i> Agregar Producto</a>
+        <a th:href="@{/admin/reporte-productos}" class="btn btn-venta"><i class="fas fa-chart-line"></i> Reportes de Venta</a>
+        <a th:href="@{/admin/reporte-inventario/pdf}" class="btn btn-pdf" target="_blank"><i class="fas fa-file-pdf"></i> Reporte PDF</a>
+        <a th:href="@{/admin/reporte-productos/excel}" class="btn btn-success-2"><i class="fas fa-file-excel"></i> Reporte Excel</a>
+    </div>
+
+    <!-- Volver al inicio -->
+    <div class="text-center mb-4">
+        <a th:href="@{/}" class="btn btn-outline-primary"><i class="fas fa-home"></i> Volver al Inicio</a>
+    </div>
+
+    <!-- Lista de productos -->
+    <h2 class="text-center mt-4">Lista de Productos</h2>
+
+    <th:block th:if="${productos != null}">
+        <div th:if="${productos.?[stock < 20].size() > 0}"
+             class="alert alert-warning alert-dismissible fade show text-center fw-semibold" role="alert">
+            ⚠ Algunos productos tienen stock bajo. ¡Revísalos en la tabla!
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+        </div>
+    </th:block>
+
+    <!-- FORMULARIO DE BÚSQUEDA -->
+    <form method="get" th:action="@{/admin/productos/nombre}" class="mb-4 text-center">
+        <input type="text" name="nombre" class="form-control d-inline-block w-50"
+               placeholder="Buscar productos por nombre..." th:value="${nombre}">
+        <button type="submit" class="btn btn-primary ms-2">
+            <i class="fas fa-search"></i> Buscar
+        </button>
+    </form>
+
+    <div class="table-responsive mt-3">
+        <table class="table table-bordered table-hover table-striped productos-table">
+            <thead class="table-dark text-center">
+            <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="producto : ${productos}">
+                <td th:text="${producto.nombre}"></td>
+                <td th:text="${producto.descripcion}"></td>
+                <td th:text="${#numbers.formatDecimal(producto.precio, 1, 2, 'COMMA')}"></td>
+                <td th:text="${producto.stock}" th:classappend="${producto.stock lt 20} ? 'table-danger' : ''"></td>
+                <td class="text-center">
+                    <a th:href="@{/admin/productos/editar/{id}(id=${producto.id_producto})}" class="btn btn-warning btn-sm">
+                        <i class="fas fa-edit"></i> Editar
+                    </a>
+                    <form th:action="@{/admin/productos/eliminar/{id}(id=${producto.id_producto})}" method="post" style="display:inline;" onsubmit="return confirm('¿Estás seguro de eliminar este producto?');">
+                        <button type="submit" class="btn btn-danger btn-sm">
+                            <i class="fas fa-trash-alt"></i> Eliminar
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+<!-- Footer global -->
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<!-- Bootstrap JS -->
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+
+
+</body>
+</html>

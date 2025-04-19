@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmación de Pedido</title>
+
+    <!-- Bootstrap CSS -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" th:href="@{/css/pedido-confirmacion.css}">
+</head>
+
+<body>
+
+<!-- Navbar -->
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="container pedido-confirmacion mt-5 mb-5">
+    <!-- Encabezado del Pedido -->
+    <div class="order-header text-center mb-5">
+        <h2 class="text-success"><i class="fas fa-check-circle"></i> Confirmación de Pedido</h2>
+        <p><strong>Número de Pedido :</strong> <span th:text="${pedido.id_pedido}"></span></p>
+        <p><strong>Fecha:</strong> <span th:text="${#dates.format(pedido.fecha, 'dd/MM/yyyy HH:mm')}"></span></p>
+        <p><strong>Total:</strong> $<span th:text="${#numbers.formatDecimal(pedido.total, 1, 2)}"></span></p>
+        <p class="forma-pago"><strong>Forma de Pago:</strong> <span th:text="${pedido.formaPago.nombre}"></span></p>
+    </div>
+
+    <!-- Dirección de Envío -->
+    <div class="direccion-envio mb-5">
+        <h3 class="text-primary"><i class="fas fa-map-marker-alt"></i> Dirección de Envío</h3>
+        <p><strong>Dirección:</strong> <span th:text="${pedido.direccionEnvio.calle}"></span>, <span th:text="${pedido.direccionEnvio.ciudad}"></span>, <span th:text="${pedido.direccionEnvio.estado}"></span></p>
+        <p><strong>Código Postal:</strong> <span th:text="${pedido.direccionEnvio.codigoPostal}"></span></p>
+    </div>
+
+    <!-- Detalles del Pedido -->
+    <div class="order-details mb-5">
+        <h3 class="text-primary"><i class="fas fa-box"></i> Detalles del Pedido</h3>
+        <div class="product-item" th:each="detalle : ${pedido.detalles}">
+            <img class="product-image" th:src="@{/images/productosImg/{imagen}(imagen=${detalle.producto.imagen})}" alt="Imagen del producto">
+            <div class="product-info">
+                <p><strong>Producto:</strong> <span th:text="${detalle.producto.nombre}"></span></p>
+                <p><strong>Cantidad:</strong> <span th:text="${detalle.cantidad}"></span></p>
+                <p><strong>Precio Unitario:</strong> $<span th:text="${#numbers.formatDecimal(detalle.precio, 1, 2)}"></span></p>
+                <p><strong>Total:</strong> $<span th:text="${#numbers.formatDecimal(detalle.cantidad * detalle.precio, 1, 2)}"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Acciones -->
+    <div class="text-center mb-3">
+        <a th:href="@{/carrito/comprobante(id=${pedido.id_pedido})}" class="btn btn-info">
+            <i class="fas fa-file-pdf"></i> Descargar Comprobante
+        </a>
+    </div>
+
+    <div class="text-center">
+        <a th:href="@{/}" class="btn btn-outline-primary">
+            <i class="fas fa-home"></i> Volver al inicio
+        </a>
+    </div>
+</div>
+
+<!-- Footer -->
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<!-- Bootstrap JS -->
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+
+</html>

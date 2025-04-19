@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis pedidos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/pedidos.css}">
+</head>
+<body>
+
+<!-- Navbar -->
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<!-- Imagen de encabezado -->
+<div class="header-imagen-pedidos">
+    <div class="overlay-texto">
+        <h1 class="titulo-header">Historial de Pedidos</h1>
+    </div>
+</div>
+
+<!-- Contenido principal -->
+<div class="container mt-5 mb-5">
+    <div class="pedido-container">
+
+        <!-- Tabla de pedidos -->
+        <table class="table table-bordered tabla-pedidos">
+            <thead>
+            <tr>
+                <th># Pedido</th>
+                <th>Fecha</th>
+                <th>Total</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="pedido : ${pedidos}">
+                <td th:text="${pedido.id_pedido}">12345</td>
+                <td th:text="${#temporals.format(pedido.fecha.toLocalDateTime(), 'dd/MM/yyyy HH:mm')}">
+                    15/04/2025
+                </td>
+                <td th:text="'$' + ${pedido.total}">199.00</td>
+                <td>
+                    <a th:href="@{/usuario/pedidos/detalle/{id}(id=${pedido.id_pedido})}"
+                       class="btn btn-sm btn-ver">
+                        Ver detalles
+                    </a>
+                    <a th:href="@{/carrito/comprobante(id=${pedido.id_pedido})}"
+                       class="btn btn-sm btn-secondary ms-2" target="_blank">
+                        <i class="fas fa-file-pdf"></i> Comprobante
+                    </a>
+                </td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(pedidos)}">
+                <td colspan="4" class="text-center">No hay pedidos registrados.</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Footer -->
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

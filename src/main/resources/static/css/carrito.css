@@ -1,0 +1,179 @@
+:root {
+    --color-primario: #6C63FF;
+    --color-secundario: #3A0CA3;
+    --color-acento: #F72585;
+    --color-hover: #FFD60A;
+    --color-texto: #1F1F1F;
+    --fondo-claro: #F9F9F9;
+    --fondo-gradiente: linear-gradient(135deg, #6C63FF, #3A0CA3);
+    --fuente-principal: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--fondo-claro);
+    font-family: var(--fuente-principal), sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--color-texto);
+}
+
+/* ===============================
+    Navbar
+================================= */
+.navbar {
+    background: var(--fondo-gradiente);
+    padding: 14px 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-brand {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: white !important;
+}
+
+.navbar-nav {
+    gap: 25px;
+}
+
+.nav-link {
+    color: white;
+    font-size: 1.2rem;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-link:hover {
+    color: var(--color-hover);
+    transform: scale(1.05);
+}
+
+/* ===============================
+    Carrito de Compras
+================================= */
+.cart-item {
+    background-color: white;
+    border-radius: 12px;
+}
+
+.cart-summary {
+    background-color: white;
+    border-radius: 12px;
+}
+
+.cart-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.cart-actions .btn {
+    width: 100%;
+}
+
+.btn-warning {
+    color: white;
+    background-color: #f0ad4e;
+    border: none;
+}
+
+.btn-warning:hover {
+    background-color: #d39e00;
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--color-primario);
+    color: white;
+}
+
+/* ===============================
+    Botones y formularios
+================================= */
+.btn-primary {
+    background: linear-gradient(135deg, var(--color-acento), var(--color-secundario));
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 10px 25px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 15px rgba(114, 9, 183, 0.4);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, var(--color-secundario), #4361EE);
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+/* ===============================
+    Footer
+================================= */
+footer {
+    background: var(--fondo-gradiente);
+    padding: 40px 0;
+    color: white;
+    text-align: center;
+}
+
+footer h5 {
+    position: relative;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+}
+
+footer h5::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: var(--color-hover);
+}
+
+footer a {
+    color: white;
+    transition: all 0.3s ease;
+    margin: 0 15px;
+}
+
+footer a:hover {
+    color: var(--color-hover) !important;
+    padding-left: 5px;
+}
+
+footer hr {
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    margin: 20px 0;
+}
+
+/* ===============================
+    Responsivo
+================================= */
+@media (max-width: 768px) {
+    .cart-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .cart-item .item-info,
+    .cart-item .item-price {
+        margin-top: 1rem;
+    }
+
+    .cart-item .item-price {
+        text-align: center !important;
+    }
+
+    .cart-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}

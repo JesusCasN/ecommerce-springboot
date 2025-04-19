@@ -1,0 +1,38 @@
+<!-- fragments/footer.html -->
+<div th:fragment="footer">
+    <footer class="footer">
+        <div class="container py-5">
+            <div class="row">
+                <!-- Acerca de -->
+                <div class="col-md-4">
+                    <h5 class="text-white mb-3">Acerca de</h5>
+                    <p class="text-white">Somos una tienda en línea especializada en productos de alta calidad. ¡Gracias por confiar en nosotros!</p>
+                </div>
+                <!-- Enlaces rápidos -->
+                <div class="col-md-4">
+                    <h5 class="text-white mb-3">Enlaces Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li><a th:href="@{/}" class="text-white">Inicio</a></li>
+                        <li><a th:href="@{/productos}" class="text-white">Productos</a></li>
+                        <li><a th:href="@{/carrito}" class="text-white">Carrito</a></li>
+                        <li><a th:href="@{/login}" class="text-white">Iniciar Sesión</a></li>
+                    </ul>
+                </div>
+                <!-- Redes Sociales -->
+                <div class="col-md-4">
+                    <h5 class="text-white mb-3">Síguenos</h5>
+                    <ul class="list-unstyled d-flex gap-3">
+                        <li><a href="#" class="text-white"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#" class="text-white"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#" class="text-white"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="text-muted">
+            <div class="text-center">
+                <p class="text-white mb-0">Desarrollado con ❤️ por José de Jesús Castillo Nolasco</p>
+            </div>
+        </div>
+    </footer>
+</div>

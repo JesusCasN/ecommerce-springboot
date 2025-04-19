@@ -1,0 +1,41 @@
+/* =============================
+    Estilos personalizados para páginas de error
+============================= */
+
+body {
+    background-color: #f1f3f5;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.error-container {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.error-code {
+    font-size: 100px;
+    font-weight: 800;
+    color: #dc3545;
+    margin-bottom: 20px;
+}
+
+.error-title {
+    font-size: 28px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.error-message {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.btn-home {
+    font-size: 16px;
+    padding: 10px 25px;
+    border-radius: 50px;
+}

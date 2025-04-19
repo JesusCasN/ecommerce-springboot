@@ -1,0 +1,60 @@
+<!-- fragments/navbar.html -->
+<div th:fragment="navbar">
+    <header class="navbar navbar-expand-lg navbar-dark bg-gradient-primary shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="/">Tienda en Línea</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" th:href="@{/}"><i class="fas fa-home"></i> Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/productos}"><i class="fas fa-box"></i> Productos</a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/carrito}"><i class="fas fa-shopping-cart"></i> Carrito</a></li>
+
+                    <!-- Usuario autenticado -->
+                    <li class="nav-item dropdown" th:if="${#authentication.name != 'anonymousUser'}">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                           data-bs-toggle="dropdown">
+                            <i class="fas fa-user-circle"></i> Mi Cuenta
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" th:href="@{/usuario/perfil}"><i class="fas fa-user-edit"></i> Mis Datos</a></li>
+                            <li><a class="dropdown-item" th:href="@{/direcciones}"><i class="fas fa-map-marker-alt"></i> Mis Direcciones</a></li>
+                            <li><a class="dropdown-item" th:href="@{/usuario/pedidos}"><i class="fas fa-clipboard-list"></i> Mis Pedidos</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <form th:action="@{/logout}" method="post">
+                                    <input type="hidden" name="_csrf" th:value="${_csrf.token}">
+                                    <button type="submit" class="dropdown-item text-danger"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- Invitado -->
+                    <li class="nav-item" th:if="${#authentication.name == 'anonymousUser'}">
+                        <a class="nav-link" th:href="@{/login}"><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</a>
+                    </li>
+                    <li class="nav-item" th:if="${#authentication.name == 'anonymousUser'}">
+                        <a class="nav-link" th:href="@{/registro}"><i class="fas fa-user-plus"></i> Registrarse</a>
+                    </li>
+
+                    <!-- Admin -->
+                    <li class="nav-item dropdown" th:if="${isAdmin}">
+                        <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button"
+                           data-bs-toggle="dropdown">
+                            <i class="fas fa-cog"></i> Panel de Administración
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" th:href="@{/admin/usuarios}"><i class="fas fa-users"></i> Gestión de Usuarios</a></li>
+                            <li><a class="dropdown-item" th:href="@{/admin/productos}"><i class="fas fa-boxes"></i> Gestión de Productos</a></li>
+                            <li><a class="dropdown-item" th:href="@{/admin/pedidos}"><i class="fas fa-clipboard-list"></i> Gestión de Pedidos</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+</div>

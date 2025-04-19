@@ -1,0 +1,288 @@
+/* ==============================
+    Variables y Estilos Base
+============================== */
+:root {
+    --color-primario: #6C63FF;
+    --color-secundario: #3A0CA3;
+    --color-acento: #F72585;
+    --color-hover: #FFD60A;
+    --color-texto: #1F1F1F;
+    --fondo-claro: #F9F9F9;
+    --fondo-gradiente: linear-gradient(135deg, #6C63FF, #3A0CA3);
+    --fuente-principal: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--fondo-claro);
+    font-family: var(--fuente-principal), sans-serif;
+    color: var(--color-texto);
+    margin: 0;
+    padding: 0;
+}
+
+/* ==============================
+    Navegación
+============================== */
+.navbar {
+    background: var(--fondo-gradiente);
+    padding: 14px 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-brand {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: white !important;
+}
+
+.navbar-nav {
+    gap: 25px;
+}
+
+.nav-link {
+    color: white;
+    font-size: 1.2rem;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-link:hover {
+    color: var(--color-hover);
+    transform: scale(1.05);
+}
+
+/* Dropdown */
+.dropdown-menu {
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+    background-color: white;
+    border: none;
+}
+
+.dropdown-item {
+    font-size: 1.1rem;
+    transition: background-color 0.3s;
+    color: var(--color-texto);
+    padding: 12px 20px;
+}
+
+.dropdown-item:hover {
+    background-color: var(--color-primario);
+    color: white;
+}
+
+/* ==============================
+    Filtros de categoría
+============================== */
+#filtro-categoria select {
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 1rem;
+}
+
+/* ==============================
+    Tarjetas de productos
+============================== */
+.card {
+    border-radius: 16px;
+    background: white;
+    border: none;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.product-image {
+    height: 220px;
+    object-fit: contain;
+    padding: 15px;
+    background-color: var(--fondo-claro);
+    border-bottom: 1px solid #e0e0e0;
+    transition: transform 0.3s ease-in-out;
+}
+
+.product-image:hover {
+    transform: scale(1.05);
+}
+
+.card-body {
+    padding: 20px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.card-body:hover {
+    background-color: #f1f1f1;
+}
+
+.card-title {
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.card-text.text-muted {
+    font-size: 0.95rem;
+    color: #6c757d !important;
+}
+
+/* ==============================
+    Botones y Formularios
+============================== */
+.btn-primary {
+    background: linear-gradient(135deg, var(--color-acento), var(--color-secundario));
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 10px 25px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 15px rgba(114, 9, 183, 0.4);
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, var(--color-secundario), #4361EE);
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+form input,
+form select,
+form button {
+    border-radius: 8px;
+    font-size: 1rem;
+    padding: 10px 15px;
+}
+
+form input:focus,
+form select:focus {
+    box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.3);
+    outline: none;
+}
+
+/* ==============================
+    Paginación
+============================== */
+.pagination a.btn {
+    border-radius: 8px;
+    font-size: 1rem;
+    padding: 8px 16px;
+    margin: 0 4px;
+    background: var(--color-primario);
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.pagination a.btn:hover {
+    background: var(--color-secundario);
+    color: white;
+}
+
+/* ==============================
+    Footer
+============================== */
+.footer {
+    background: var(--fondo-gradiente);
+    padding: 40px 0;
+    color: white;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+.footer h5 {
+    position: relative;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    color: white;
+}
+
+.footer h5::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: var(--color-hover);
+}
+
+.footer a {
+    color: white;
+    transition: all 0.3s ease;
+    margin: 0 15px;
+}
+
+.footer a:hover {
+    color: var(--color-hover) !important;
+    padding-left: 5px;
+}
+
+.footer hr {
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    margin: 20px 0;
+}
+
+.footer p {
+    margin: 0;
+}
+
+/* ==============================
+    Responsividad
+============================== */
+@media (max-width: 992px) {
+    .navbar-nav {
+        gap: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.5rem;
+    }
+
+    .product-image {
+        height: 180px;
+    }
+
+    .card-title {
+        font-size: 1rem;
+    }
+
+    #filtro-categoria {
+        padding: 1rem 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .product-image {
+        height: 150px;
+    }
+
+    .footer h5 {
+        font-size: 1.1rem;
+    }
+
+    .card-body {
+        padding: 15px;
+    }
+
+    .btn-primary {
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+
+}
+
+

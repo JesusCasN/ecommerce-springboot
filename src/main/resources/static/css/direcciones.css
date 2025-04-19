@@ -1,0 +1,250 @@
+:root {
+    --color-primario: #6C63FF;
+    --color-secundario: #3A0CA3;
+    --color-acento: #F72585;
+    --color-hover: #FFD60A;
+    --color-texto: #1F1F1F;
+    --fondo-claro: #F9F9F9;
+    --fondo-gradiente: linear-gradient(135deg, #6C63FF, #3A0CA3);
+    --fuente-principal: 'Poppins', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: url('../images/fondos/fondo2.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: var(--fuente-principal), sans-serif;
+    color: var(--color-texto);
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.6);
+    z-index: -1;
+}
+
+/* ==============================
+   🔝 Navbar
+============================== */
+.navbar {
+    background: var(--fondo-gradiente);
+    padding: 14px 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-brand {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: white !important;
+}
+
+.navbar-nav {
+    gap: 25px;
+}
+
+.nav-link {
+    color: white;
+    font-size: 1.2rem;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-link:hover {
+    color: var(--color-hover);
+    transform: scale(1.05);
+}
+
+/* ==============================
+   📦 Contenedor principal
+============================== */
+.main-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+}
+
+.header-banner {
+    height: 250px;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 2.5rem;
+}
+
+.header-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.8);
+}
+
+.banner-title {
+    position: absolute;
+    bottom: 20%;
+    left: 5%;
+    color: white;
+    font-size: 2.8rem;
+    font-weight: 600;
+    text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* ==============================
+   📝 Formulario
+============================== */
+.form-section {
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+    margin-bottom: 3rem;
+}
+
+.form-title {
+    color: var(--color-primario);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--color-primario);
+    padding-bottom: 0.5rem;
+}
+
+.form-floating label {
+    color: #495057;
+    font-weight: 500;
+}
+
+.form-control {
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: var(--color-primario);
+    box-shadow: 0 0 0 3px rgba(42, 111, 151, 0.25);
+}
+
+.btn-primary-custom {
+    background: var(--color-primario);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    color: white;
+}
+
+.btn-primary-custom:hover {
+    background: var(--color-secundario);
+    transform: translateY(-2px);
+}
+
+/* ==============================
+   📋 Tabla de direcciones
+============================== */
+.address-table {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.address-table thead {
+    background: var(--color-primario);
+    color: white;
+}
+
+.address-table th {
+    font-weight: 600;
+    padding: 1rem;
+}
+
+.action-buttons .btn {
+    margin: 0 0.3rem;
+    min-width: 80px;
+}
+
+.address-table tbody tr {
+    transition: all 0.2s ease;
+}
+
+.address-table tbody tr:hover {
+    background: #f8f9fa;
+    transform: translateX(8px);
+}
+
+/* ==============================
+   ⚓ Footer
+============================== */
+footer {
+    background: var(--fondo-gradiente);
+    padding: 40px 0;
+    color: white;
+    text-align: center;
+}
+
+footer h5 {
+    position: relative;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+}
+
+footer h5::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: var(--color-hover);
+}
+
+footer a {
+    color: white;
+    transition: all 0.3s ease;
+    margin: 0 15px;
+}
+
+footer a:hover {
+    color: var(--color-hover) !important;
+    padding-left: 5px;
+}
+
+footer hr {
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    margin: 20px 0;
+}
+
+/* ==============================
+   📱 Responsividad
+============================== */
+@media (max-width: 768px) {
+    .main-container {
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    .header-banner {
+        height: 180px;
+    }
+
+    .banner-title {
+        font-size: 2rem;
+    }
+
+    .action-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
