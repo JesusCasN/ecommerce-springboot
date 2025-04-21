@@ -41,7 +41,7 @@ Proyecto desarrollado por **José de Jesús Castillo Nolasco** como parte de una
 ## 🔧 Instalación y ejecución
 1. Clonar el repositorio:
 ```bash
-git clone https://github.com/usuario/TiendaOnline.git
+git clone https://github.com/JesusCasN/ecommerce-springboot.git
 ```
 
 2. Importar como proyecto Maven en tu IDE (recomendado: IntelliJ IDEA)
@@ -166,9 +166,16 @@ Al iniciar la aplicación por primera vez, se inserta automáticamente un usuari
 
 ### 📋 Gestión pedidos
 ![Gestión pedidos](capturas/gestion-pedidos.png)
+
+---
+## 🌐 Portafolio
+
+Si deseas conocer más sobre mis proyectos y experiencia, puedes visitar mi portafolio personal:
+
+🔗 [https://jesus-portafolio.netlify.app/](https://jesus-portafolio.netlify.app/)
+
 ---
 ## ✍️ Autor
-
 <div style="display: flex; align-items: center; justify-content: space-between;">
   <div>
     <strong>José de Jesús Castillo Nolasco</strong> 👨‍💻<br>
@@ -177,6 +184,4 @@ Al iniciar la aplicación por primera vez, se inserta automáticamente un usuari
   <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExazY2NXNoOXBxNGIxa2czYTVpNXBqbTVuaWFrZGkxdHoyNmJ2Z3dsMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/78XCFBGOlS6keY1Bil/giphy.gif" width="200" alt="Developer gif">
 </div>
 
-[LinkedIn](https://www.linkedin.com/in/jose-castillo-nolasco/)
-[Portafolio](#)
 ---
